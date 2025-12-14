@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuteSpeak</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6366f1">
+
+</head>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+<!-- MESSAGE FOCUS OVERLAY -->
+<div id="messageOverlay" class="message-overlay hidden">
+  <div class="message-popup">
+    <div id="popupEmoji" class="popup-emoji"></div>
+    <div id="popupEn" class="popup-en"></div>
+    <div id="popupHi" class="popup-hi"></div>
+  </div>
+</div>
+
+
+<body>
+
+  <!-- 🌈 AMBIENT BACKGROUND VISUALS -->
+  <div class="bg">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <!-- 🪟 GLASS APP CONTAINER -->
+  <div class="app-shell">
+
+    <!-- HEADER -->
+    <header>
+      <h1>MuteSpeak</h1>
+      <p>I cannot speak. Please listen or read.</p>
+    </header>
+
+    <!-- LANGUAGE TOGGLE -->
+    <section class="lang-toggle">
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('hi')">हिंदी</button>
+    </section>
+
+    <!-- MODE SELECTOR -->
+    <section class="modes">
+      <button onclick="setMode('general')">💬 General</button>
+      <button onclick="setMode('hospital')">🏥 Hospital</button>
+      <button onclick="setMode('shop')">🛒 Shop</button>
+      <button onclick="setMode('travel')">🚌 Travel</button>
+      <button onclick="setMode('home')">🏠 Home</button>
+      <button onclick="setMode('authority')">👮 Authority</button>
+      <button onclick="setMode('emergency')" class="danger">🚨 Emergency</button>
+      <button onclick="setMode('custom')">📝 My Messages</button>
+    </section>
+
+    <!-- CUSTOM MESSAGE INPUT -->
+    <section id="customInput" class="custom-input hidden">
+      <input
+        id="customText"
+        type="text"
+        placeholder="Enter message (English or Hindi)"
+      />
+      <button onclick="addCustomMessage()">Add</button>
+    </section>
+
+    <!-- MESSAGE CARDS -->
+    <main id="cards" aria-live="polite"></main>
+
+    <!-- LISTEN MODE -->
+    <section class="listen">
+      <button onclick="startListening()">🎤 Listen</button>
+      <div id="heardText"></div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+  color: #111;
+}
+
+/* ---------- HEADER ---------- */
+
+header {
+  padding: 1.2rem 1rem 0.6rem;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+header p {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ---------- LANGUAGE TOGGLE ---------- */
+
+.lang-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.5rem;
+}
+
+.lang-toggle button {
+  padding: 0.5rem 1.1rem;
+  border-radius: 16px;
+  border: none;
+  background: #e7e9ff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.lang-toggle button:active {
+  transform: scale(0.95);
+  background: #d6d9ff;
+}
+
+/* ---------- MODE SELECTOR ---------- */
+
+.modes {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0.8rem;
+}
+
+.modes button {
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background: #e0e3ff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.modes button:active {
+  transform: scale(0.95);
+  background: #d0d4ff;
+}
+
+/* ---------- CARDS GRID ---------- */
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 1.3rem 1rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card:active {
+  transform: scale(0.94);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ---------- LISTEN SECTION ---------- */
+
+.listen {
+  padding: 1rem;
+  text-align: center;
+}
+
+.listen button {
+  padding: 0.9rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 18px;
+  border: none;
+  background: #111;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.listen button:active {
+  transform: scale(0.95);
+  background: #000;
+}
+
+#heardText {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (min-width: 600px) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+body[data-mode="hospital"] {
+  background: #fff4f4;
+}
+
+body[data-mode="shop"] {
+  background: #f4fff8;
+}
+
+body[data-mode="travel"] {
+  background: #f4f9ff;
+}
+
+body[data-mode="home"] {
+  background: #fffaf2;
+}
+
+body[data-mode="authority"] {
+  background: #f3f3f3;
+}
+
+body[data-mode="emergency"] {
+  background: #fff0f0;
+}
+
+.modes .danger {
+  background: #ff4d4d;
+  color: white;
+  font-weight: 700;
+}
+
+body[data-mode="emergency"] .card {
+  border: 2px solid #ff4d4d;
+}
+
+/* ---------- CARD CONTENT ---------- */
+
+.card-emoji {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+}
+
+.card-en {
+  font-size: 1.05rem;
+  margin-top: 4px;
+}
+
+.card-hi {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ---------- ENTRY ANIMATION ---------- */
+
+
+@keyframes cardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- CLICK PULSE ---------- */
+
+.card.pulse {
+  animation: pulse 0.25s ease;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- RIPPLE EFFECT ---------- */
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-ripple {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(0,0,0,0.15) 10%, transparent 60%);
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* ENTRY ANIMATION */
+.animated-card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: cardEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.custom-input {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem 0.5rem;
+  justify-content: center;
+}
+
+.custom-input input {
+  flex: 1;
+  max-width: 300px;
+  padding: 0.6rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.custom-input button {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background: #111;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.custom-card {
+  position: relative;
+}
+
+.custom-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.custom-actions button {
+  border: none;
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.custom-actions button:active {
+  transform: scale(0.9);
+}
+/* ===== BACKGROUND VISUALS ===== */
+.bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -2;
+  background: linear-gradient(120deg, #eef2ff, #fff7ed, #ecfeff);
+}
+
+.blob {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 20s infinite ease-in-out;
+}
+
+.blob-1 {
+  background: #a5b4fc;
+  top: -120px;
+  left: -120px;
+}
+
+.blob-2 {
+  background: #fcd34d;
+  bottom: -140px;
+  right: -140px;
+  animation-delay: -6s;
+}
+
+.blob-3 {
+  background: #67e8f9;
+  top: 40%;
+  left: 60%;
+  animation-delay: -12s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-40px) translateX(30px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* ===== GLASS APP CONTAINER ===== */
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.7);
+  min-height: 100vh;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.4);
+}
+/* ===== MESSAGE FOCUS OVERLAY ===== */
+.message-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.4s ease;
+}
+
+.message-popup {
+  background: white;
+  border-radius: 26px;
+  padding: 2rem 2.2rem;
+  text-align: center;
+  max-width: 90%;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  transform: scale(0.94);
+  animation: popupIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes popupIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+.popup-emoji {
+  font-size: 3.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.popup-en {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.popup-hi {
+  font-size: 1.05rem;
+  margin-top: 0.4rem;
+  color: #555;
+}
+
+.hidden {
+  display: none;
+}
+/* ===== ACTIVE STATE (MODES & LANGUAGE) ===== */
+
+.modes button.active,
+.lang-toggle button.active {
+  background: #6366f1;        /* primary highlight */
+  color: white;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.modes button.active:active,
+.lang-toggle button.active:active {
+  transform: scale(0.97);
+}
+
+
+
