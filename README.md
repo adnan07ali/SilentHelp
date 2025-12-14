@@ -126,15 +126,18 @@ Custom messages are:
 ---
 
 ## 📁 Project Structure
+
+```
 SpeakForMe/
-├── index.html
-├── style.css
-├── app.js
-├── manifest.json
-├── service-worker.js
-├── icon-192.png
-├── icon-512.png
-├── README.md
+├── index.html          # Main application layout
+├── style.css           # Styling, animations, and UI design
+├── app.js              # Application logic and interactions
+├── manifest.json       # PWA configuration
+├── service-worker.js   # Offline support and caching
+├── icon-192.png        # App icon (192x192)
+├── icon-512.png        # App icon (512x512)
+└── README.md           # Project documentation
+```
 
 
 ## 🚀 Deployment
