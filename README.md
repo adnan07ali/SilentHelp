@@ -8,7 +8,7 @@ The app combines **tap-to-speak messages**, **clear visual feedback**, and **off
 
 ## 📌 Live Demo
 
-🔗 **Live App:** https://YOUR-NETLIFY-LINK.netlify.app  
+🔗 **Live App:** https://echoaid-by-adnan.netlify.app/ 
 📱 **Installable as a mobile app (PWA)**
 
 ---
